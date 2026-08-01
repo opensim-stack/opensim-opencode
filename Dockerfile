@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM smanx/opencode:latest
+FROM openeuler/opencode:latest
 
 WORKDIR /workspace
 
