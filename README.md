@@ -40,6 +40,7 @@ docker build -t opensim-opencode:local .
 docker run --rm \
   -e OPENCODE_HOST=0.0.0.0 \
   -e OPENCODE_PORT=8998 \
+  -e OPENCODE_SERVER_PASSWORD=change-me \
   -p 8998:8998 \
   -v opensim-config:/workspace \
   -v opencode-config:/root/.config/opencode \
@@ -53,7 +54,9 @@ docker run --rm \
 
 - `OPENCODE_WEB_PORT` fallback port variable for stack compatibility
 - `OPENCODE_SERVER_EXTRA_ARGS` extra flags appended to server startup command
-- `OPENCODE_PROJECT_DIR` override startup/project directory (default `/workspace`)
+- `OPENCODE_SERVER_PASSWORD` server password value (available for server/auth wiring and stack pass-through)
+- `OPENCODE_MODE` override mode, defaults to `serve`, with `web` as an alternative
+- `OPENCODE_PROJECT_DIR` override startup directory (default `/workspace`)
 
 ## Build and publish multiarch image
 
