@@ -9,7 +9,7 @@ It is intended to be used as part of the **OpenSim Stack** project:
 
 - Runs `opencode` in server mode
 - Binds HTTP on container port `8998`
-- Starts in `/workspace` and uses it as the project directory
+- Starts in `/workspace`
 - Uses persistent directories for config/state/cache/data
 
 ## Required Volume Mounts
