@@ -52,7 +52,6 @@ docker run --rm \
 
 ## Optional environment variables
 
-- `OPENCODE_WEB_PORT` fallback port variable for stack compatibility
 - `OPENCODE_SERVER_EXTRA_ARGS` extra flags appended to server startup command
 - `OPENCODE_SERVER_PASSWORD` server password value (available for server/auth wiring and stack pass-through)
 - `OPENCODE_MODE` override mode, defaults to `serve`, with `web` as an alternative
