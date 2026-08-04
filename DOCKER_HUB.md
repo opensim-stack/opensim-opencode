@@ -14,7 +14,7 @@ It is intended to be used as part of the **OpenSim Stack** project:
 
 ## Required Volume Mounts
 
-- `opensim-config` -> `/workspace`
+- `opensim-workspace` -> `/workspace`
 - `opencode-config` -> `/root/.config/opencode`
 - `opencode-data` -> `/root/.local/share/opencode`
 - `opencode-state` -> `/root/.local/state/opencode`
@@ -27,7 +27,7 @@ docker run --rm \
   -e OPENCODE_HOST=0.0.0.0 \
   -e OPENCODE_PORT=8998 \
   -p 8998:8998 \
-  -v opensim-config:/workspace \
+  -v opensim-workspace:/workspace \
   -v opencode-config:/root/.config/opencode \
   -v opencode-data:/root/.local/share/opencode \
   -v opencode-state:/root/.local/state/opencode \

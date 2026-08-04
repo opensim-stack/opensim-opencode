@@ -22,7 +22,7 @@ It starts `opencode` in **server mode** and binds HTTP on container port `8998`.
 
 ## Required volume mappings
 
-- `opensim-config` -> `/workspace`
+- `opensim-workspace` -> `/workspace`
 - `opencode-config` -> `/root/.config/opencode`
 - `opencode-data` -> `/root/.local/share/opencode`
 - `opencode-state` -> `/root/.local/state/opencode`
@@ -42,7 +42,7 @@ docker run --rm \
   -e OPENCODE_PORT=8998 \
   -e OPENCODE_SERVER_PASSWORD=change-me \
   -p 8998:8998 \
-  -v opensim-config:/workspace \
+  -v opensim-workspace:/workspace \
   -v opencode-config:/root/.config/opencode \
   -v opencode-data:/root/.local/share/opencode \
   -v opencode-state:/root/.local/state/opencode \
