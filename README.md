@@ -6,6 +6,8 @@
 
 It starts `opencode` in **server mode** and binds HTTP on container port `8998`.
 
+*This is part of the [opensim-stack](https://opensim-stack.github.io/) and is intended to be used in conjunction with other parts of the stack. See [Docs](https://opensim-stack.github.io/docs/index.html) for full details.*
+
 ## What this image does
 
 - Runs `opencode` in server mode (`server` or `serve`, auto-detected)
