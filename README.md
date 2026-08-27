@@ -6,6 +6,8 @@
 
 It starts `opencode` in **server mode** and binds HTTP on container port `8998`.
 
+**For Issues And Discussions see main project [opensim-ai-docker](https://github.com/opensim-stack/opensim-ai-docker)**
+
 *This is part of the [opensim-stack](https://opensim-stack.github.io/) and is intended to be used in conjunction with other parts of the stack. See [Docs](https://opensim-stack.github.io/docs/index.html) for full details.*
 
 ## What this image does
@@ -30,51 +32,9 @@ It starts `opencode` in **server mode** and binds HTTP on container port `8998`.
 - `opencode-state` -> `/root/.local/state/opencode`
 - `opencode-cache` -> `/root/.cache/opencode`
 
-## Build local image
-
-```bash
-docker build -t opensim-opencode:local .
-```
-
-## Run local image
-
-```bash
-docker run --rm \
-  -e OPENCODE_HOST=0.0.0.0 \
-  -e OPENCODE_PORT=8998 \
-  -e OPENCODE_SERVER_PASSWORD=change-me \
-  -p 8998:8998 \
-  -v opensim-workspace:/workspace \
-  -v opencode-config:/root/.config/opencode \
-  -v opencode-data:/root/.local/share/opencode \
-  -v opencode-state:/root/.local/state/opencode \
-  -v opencode-cache:/root/.cache/opencode \
-  opensim-opencode:local
-```
-
 ## Optional environment variables
 
 - `OPENCODE_SERVER_EXTRA_ARGS` extra flags appended to server startup command
 - `OPENCODE_SERVER_PASSWORD` server password value (available for server/auth wiring and stack pass-through)
 - `OPENCODE_MODE` override mode, defaults to `serve`, with `web` as an alternative
 - `OPENCODE_PROJECT_DIR` override startup directory (default `/workspace`)
-
-## Build and publish multiarch image
-
-Create/use a buildx builder once:
-
-```bash
-docker buildx create --name multiarch --use
-docker buildx inspect --bootstrap
-```
-
-Build and push Linux AMD64 + ARM64:
-
-```bash
-docker buildx build \
-  --platform linux/amd64,linux/arm64 \
-  -t bithatch/opensim-opencode:latest \
-  -t bithatch/opensim-opencode:$(date +%Y%m%d) \
-  --push \
-  .
-```
