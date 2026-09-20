@@ -1,12 +1,14 @@
-### Building
+# Building
 
-## Build local image
+Build and publish a multiarch image.
+
+## Local Build
 
 ```bash
 docker build -t opensim-opencode:local .
 ```
 
-## Run local image
+### Run Local
 
 ```bash
 docker run --rm \
@@ -21,9 +23,9 @@ docker run --rm \
   -v opencode-cache:/root/.cache/opencode \
   opensim-opencode:local
 ```
+## Publish
 
-
-## Build and publish multiarch image
+### Setup
 
 Create/use a buildx builder once:
 
@@ -31,6 +33,8 @@ Create/use a buildx builder once:
 docker buildx create --name multiarch --use
 docker buildx inspect --bootstrap
 ```
+
+### Build
 
 Build and push Linux AMD64 + ARM64:
 
@@ -42,3 +46,24 @@ docker buildx build \
   --push \
   .
 ```
+
+## Automated Publish (GitHub Actions)
+
+This repository includes `.github/workflows/docker-publish.yml` to automatically build and push a multiarch image to Docker Hub.
+
+### Triggers
+
+- Pushes to `master` or `main` when `Dockerfile`, `docker/**`, or the workflow itself changes
+- Git tags matching `v*`
+- Manual `workflow_dispatch`
+
+### Required Repository Secrets
+
+- `DOCKERHUB_USERNAME`: Docker Hub username or org robot account name
+- `DOCKERHUB_TOKEN`: Docker Hub access token (recommended) or password
+
+### Published Platforms and Tags
+
+- Platforms: `linux/amd64`, `linux/arm64`
+- Tags (default branch): `latest`, `YYYYMMDD`, and `sha-<commit>`
+- Tags (tag builds): `<git-tag>` and `sha-<commit>`
